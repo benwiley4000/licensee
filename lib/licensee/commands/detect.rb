@@ -87,6 +87,8 @@ class LicenseeCLI < Thor
       Licensee::ContentHelper.format_percent(value)
     when :method
       value.to_s.tr('_', ' ').capitalize + ':'
+    when :attribution
+      '"' + value.gsub('"', '\\"').gsub(10.chr, '\\\\\\\\n') + '"'
     else
       value
     end
